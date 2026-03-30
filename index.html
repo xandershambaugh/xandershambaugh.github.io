@@ -12,6 +12,13 @@
 
   <style>
     @font-face {
+      font-family: 'Old London';
+      src: url('fonts/OldLondon.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
       font-family: 'POMOTECT ANALOG';
       src: url('fonts/pomotect-analog.otf') format('opentype');
       font-weight: 400;
@@ -37,8 +44,8 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: #000;
-      color: rgb(132, 137, 142);
+      background-color: rgb(255, 238, 238);
+      color: rgba(0, 0, 0, 0.55);
       overflow-x: hidden;
     }
 
@@ -82,12 +89,12 @@
       font-size: 12px;
       font-weight: 700;
       letter-spacing: -0.01em;
-      color: rgb(132, 137, 142);
+      color: rgba(0, 0, 0, 0.55);
       transition: color 0.2s;
     }
 
     .nav-left a:hover {
-      color: #fff;
+      color: #000;
     }
 
     .nav-right {
@@ -99,12 +106,12 @@
       font-size: 12px;
       font-weight: 700;
       letter-spacing: -0.01em;
-      color: rgb(132, 137, 142);
+      color: rgba(0, 0, 0, 0.55);
       transition: color 0.2s;
     }
 
     .nav-right a:hover {
-      color: #fff;
+      color: #000;
     }
 
     /* ======== LOGO ======== */
@@ -114,11 +121,11 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 10002;
-      font-family: 'IM Fell English', serif;
-      font-size: 28px;
+      font-family: 'Old London', 'UnifrakturMaguntia', cursive;
+      font-size: 21px;
       font-weight: 400;
       text-transform: uppercase;
-      color: rgb(132, 137, 142);
+      color: rgba(0, 0, 0, 0.55);
       letter-spacing: 0.01em;
       white-space: nowrap;
       pointer-events: auto;
@@ -126,7 +133,7 @@
     }
 
     .logo:hover {
-      color: #fff;
+      color: #000;
     }
 
     /* ======== HERO IMAGE ======== */
@@ -161,8 +168,8 @@
       z-index: 10000;
       height: 24px;
       overflow: hidden;
-      background: #000;
-      border-top: 1px solid rgb(30, 30, 30);
+      background: rgb(255, 238, 238);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       pointer-events: none;
@@ -180,7 +187,7 @@
       font-family: 'Space Mono', monospace;
       font-size: 11px;
       font-weight: 400;
-      color: rgb(80, 80, 80);
+      color: rgba(0, 0, 0, 0.25);
       text-transform: uppercase;
       letter-spacing: 0.04em;
       white-space: nowrap;
@@ -189,7 +196,7 @@
     }
 
     .ticker-track a:hover {
-      color: #fff;
+      color: #000;
     }
 
     /* ======== FOOTER BAR ======== */
@@ -205,8 +212,8 @@
       align-items: center;
       font-size: 11px;
       font-weight: 400;
-      color: rgb(132, 137, 142);
-      background: #000;
+      color: rgba(0, 0, 0, 0.55);
+      background: rgb(255, 238, 238);
       pointer-events: none;
     }
 
@@ -219,7 +226,7 @@
     }
 
     .footer-bar a:hover {
-      color: #fff;
+      color: #000;
     }
 
     .footer-left-bar {
@@ -232,14 +239,105 @@
       gap: 24px;
     }
 
+    /* ======== MOBILE MENU ======== */
+    .mobile-menu-btn {
+      display: none;
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 10003;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      width: 28px;
+      height: 24px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: rgba(0, 0, 0, 0.55);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu-btn:hover span {
+      background-color: #000;
+    }
+
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(255, 238, 238);
+      z-index: 10002;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .mobile-overlay.open {
+      display: flex;
+    }
+
+    .mobile-overlay a {
+      font-family: 'Space Mono', 'Courier New', monospace;
+      font-size: clamp(32px, 8vw, 48px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: rgba(0, 0, 0, 0.55);
+      transition: color 0.2s;
+    }
+
+    .mobile-overlay a:hover {
+      color: #000;
+    }
+
+    /* ======== MOBILE IMAGE FEED ======== */
+    .mobile-feed {
+      display: none;
+    }
+
+    .mobile-feed img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(100%);
+    }
+
     /* ======== RESPONSIVE ======== */
     @media (max-width: 768px) {
+      .nav-left, .nav-right {
+        display: none;
+      }
+
       .logo {
         font-size: 14px;
+        top: 18px;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
       }
 
       .hero-image {
         display: none;
+      }
+
+      .mobile-feed {
+        display: block;
+        padding-top: 0;
+        padding-bottom: 100px;
       }
 
       .ticker-bar {
@@ -271,9 +369,34 @@
   <!-- ====== LOGO ====== -->
   <a href="index.html" class="logo">XANDER SHAMBAUGH</a>
 
-  <!-- ====== HERO IMAGE ====== -->
+  <!-- ====== MOBILE MENU ====== -->
+  <button class="mobile-menu-btn" aria-label="Menu" onclick="document.querySelector('.mobile-overlay').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="mobile-overlay">
+    <a href="projects.html">Index</a>
+    <a href="drawings.html">Drawings</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ====== HERO IMAGE (desktop) ====== -->
   <div class="hero-image">
     <img id="hero-img" src="" alt="Featured project">
+  </div>
+
+  <!-- ====== MOBILE IMAGE FEED ====== -->
+  <div class="mobile-feed">
+    <a href="projects-v2/concert-hall.html"><img src="Links/002_Hero_Final.jpg" alt="Concert Hall"></a>
+    <a href="projects-v2/acoustic-pavilion.html"><img src="Links/IMG_7941.JPG" alt="Acoustic Pavilion"></a>
+    <a href="projects-v2/restaurant.html"><img src="Links/IMG_7048_1.jpg" alt="Restaurant"></a>
+    <a href="projects-v2/residential-towers.html"><img src="Links/EXT09_Looking up_v02.jpg" alt="Residential Towers"></a>
+    <a href="projects-v2/single-family-residential.html"><img src="Links/DSCF3300.JPG" alt="Single-Family Residential"></a>
+    <a href="projects-v2/design-studio.html"><img src="Links/Aerial 12.jpg" alt="Design Studio"></a>
+    <a href="projects-v2/architectural-drawings.html"><img src="Links/Flatiron (edited) copy.jpg" alt="Architectural Drawings"></a>
+    <a href="projects-v2/musical-furniture.html"><img src="Links/IMG_7055_1.jpg" alt="Musical Furniture"></a>
+    <a href="projects-v2/creative-label.html"><img src="Links/Notre Dame (Edited).jpg" alt="Creative Label"></a>
+    <a href="projects-v2/editorial.html"><img src="Links/IMG_5207.JPEG" alt="Editorial"></a>
+    <a href="projects-v2/brand-strategy.html"><img src="Links/Proof 55.jpg" alt="Brand Strategy"></a>
   </div>
 
   <script>
