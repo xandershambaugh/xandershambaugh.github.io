@@ -303,16 +303,47 @@
       color: #000;
     }
 
-    /* ======== MOBILE IMAGE FEED ======== */
-    .mobile-feed {
+    /* ======== MOBILE CONTACT ======== */
+    .mobile-contact {
       display: none;
+      padding: 80px 24px 120px;
+      max-width: 640px;
     }
 
-    .mobile-feed img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: grayscale(100%);
+    .mobile-contact .contact-heading {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 32px;
+    }
+
+    .mobile-contact .contact-bio {
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(0, 0, 0, 0.55);
+      margin-bottom: 36px;
+    }
+
+    .mobile-contact .contact-bio p {
+      margin-bottom: 18px;
+    }
+
+    .mobile-contact .contact-cta {
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(0, 0, 0, 0.25);
+    }
+
+    .mobile-contact .contact-cta a {
+      color: #000;
+      transition: color 0.2s;
+    }
+
+    .mobile-contact .contact-cta a:hover {
+      color: rgba(0, 0, 0, 0.55);
     }
 
     /* ======== RESPONSIVE ======== */
@@ -334,10 +365,8 @@
         display: none;
       }
 
-      .mobile-feed {
+      .mobile-contact {
         display: block;
-        padding-top: 0;
-        padding-bottom: 100px;
       }
 
       .ticker-bar {
@@ -384,26 +413,23 @@
     <img id="hero-img" src="" alt="Featured project">
   </div>
 
-  <!-- ====== MOBILE IMAGE FEED ====== -->
-  <div class="mobile-feed">
-    <a href="projects-v2/concert-hall.html"><img src="Links/002_Hero_Final.jpg" alt="Concert Hall"></a>
-    <a href="projects-v2/acoustic-pavilion.html"><img src="Links/IMG_7941.JPG" alt="Acoustic Pavilion"></a>
-    <a href="projects-v2/restaurant.html"><img src="Links/IMG_7048_1.jpg" alt="Restaurant"></a>
-    <a href="projects-v2/residential-towers.html"><img src="Links/EXT09_Looking up_v02.jpg" alt="Residential Towers"></a>
-    <a href="projects-v2/single-family-residential.html"><img src="Links/DSCF3300.JPG" alt="Single-Family Residential"></a>
-    <a href="projects-v2/design-studio.html"><img src="Links/Aerial 12.jpg" alt="Design Studio"></a>
-    <a href="projects-v2/architectural-drawings.html"><img src="Links/Flatiron (edited) copy.jpg" alt="Architectural Drawings"></a>
-    <a href="projects-v2/musical-furniture.html"><img src="Links/IMG_7055_1.jpg" alt="Musical Furniture"></a>
-    <a href="projects-v2/creative-label.html"><img src="Links/Notre Dame (Edited).jpg" alt="Creative Label"></a>
-    <a href="projects-v2/editorial.html"><img src="Links/IMG_5207.JPEG" alt="Editorial"></a>
-    <a href="projects-v2/brand-strategy.html"><img src="Links/Proof 55.jpg" alt="Brand Strategy"></a>
+  <!-- ====== MOBILE CONTACT ====== -->
+  <div class="mobile-contact">
+    <p class="contact-heading">Contact</p>
+    <div class="contact-bio">
+      <p>Originally trained as an architect, I moved to Los Angeles in 2018 to work alongside Frank Gehry in his design studio.</p>
+      <p>While starting at a firm that uses modelmaking as its primary design tool, I learned a lot in physical craft and gained an enormous appreciation for Frank's process of form-finding rooted in his innate curiosity for testing new materials and pushing their tectonic limitations.</p>
+      <p>In 2023, I co-founded a creative studio called Postmodern Tectonics.</p>
+      <p>We design spaces, we build furniture, strategize brands, help on marketing, and then we like to publish essays along the way.</p>
+    </div>
+    <div class="contact-cta">
+      <p>Visit our website at:<br><a href="https://www.pomotect.com" target="_blank" rel="noopener">www.pomotect.com</a></p>
+    </div>
   </div>
 
   <script>
     (function() {
       var images = [
-        'Links/002_Hero_Final.jpg',
-        'Links/IMG_7941.JPG',
         'Links/IMG_7048_1.jpg',
         'Links/EXT09_Looking up_v02.jpg',
         'Links/DSCF3300.JPG',
