@@ -303,10 +303,23 @@
       color: #000;
     }
 
+    /* ======== MOBILE HERO ======== */
+    .mobile-hero {
+      display: none;
+      width: 100%;
+    }
+
+    .mobile-hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(100%);
+    }
+
     /* ======== MOBILE CONTACT ======== */
     .mobile-contact {
       display: none;
-      padding: 80px 24px 120px;
+      padding: 32px 24px 120px;
       max-width: 640px;
     }
 
@@ -365,6 +378,10 @@
         display: none;
       }
 
+      .mobile-hero {
+        display: block;
+      }
+
       .mobile-contact {
         display: block;
       }
@@ -413,6 +430,11 @@
     <img id="hero-img" src="" alt="Featured project">
   </div>
 
+  <!-- ====== MOBILE HERO ====== -->
+  <div class="mobile-hero">
+    <img id="mobile-hero-img" src="" alt="Featured project">
+  </div>
+
   <!-- ====== MOBILE CONTACT ====== -->
   <div class="mobile-contact">
     <p class="contact-heading">Contact</p>
@@ -440,8 +462,9 @@
         'Links/IMG_5207.JPEG',
         'Links/Proof 55.jpg'
       ];
-      var img = images[Math.floor(Math.random() * images.length)];
-      document.getElementById('hero-img').src = img;
+      var idx = Math.floor(Math.random() * images.length);
+      document.getElementById('hero-img').src = images[idx];
+      document.getElementById('mobile-hero-img').src = images[idx];
     })();
   </script>
 
