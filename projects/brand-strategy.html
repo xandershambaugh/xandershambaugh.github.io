@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Strategy — Xander Shambaugh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face { font-family: 'POMOTECT ANALOG'; src: url('../fonts/pomotect-analog.otf') format('opentype'); font-weight: 400; font-style: normal; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #000; color: rgb(132, 137, 142); overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        img { display: block; width: 100%; height: auto; object-fit: cover; filter: grayscale(100%); }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 10001; padding: 20px 24px; display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; }
+        .navbar > * { pointer-events: auto; }
+        .nav-left { display: flex; gap: 20px; }
+        .nav-left a { font-size: 12px; font-weight: 700; letter-spacing: -0.01em; color: rgb(132, 137, 142); transition: color 0.2s; }
+        .nav-left a:hover { color: #fff; }
+        .logo { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 10002; font-family: 'IM Fell English', serif; text-transform: uppercase; font-size: 28px; font-weight: 400; color: rgb(132, 137, 142); letter-spacing: 0.01em; white-space: nowrap; pointer-events: auto; transition: color 0.2s; }
+        .logo:hover { color: #fff; }
+        .project-page { padding: 100px 48px 80px; max-width: 1400px; margin: 0 auto; }
+        .project-header { margin-bottom: 48px; border-bottom: 1px solid rgb(40,40,40); padding-bottom: 24px; }
+        .project-header h1 { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+        .project-subtitle { font-family: 'Space Mono', monospace; font-size: 11px; color: rgb(80,80,80); line-height: 1.6; }
+        .project-subtitle span { color: rgb(132, 137, 142); }
+        .spread { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+        .spread.full { grid-template-columns: 1fr; }
+        .spread img { border: 1px solid rgb(30,30,30); }
+        .text-block { font-size: 11px; line-height: 1.7; max-width: 600px; margin-bottom: 32px; }
+        .text-block h2 { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; margin-bottom: 8px; }
+        .caption { font-size: 10px; color: rgb(60,60,60); margin-top: 6px; }
+        .back-link { display: inline-block; margin-top: 48px; font-family: 'Space Mono', monospace; font-size: 11px; color: rgb(80,80,80); letter-spacing: 0.04em; transition: color 0.2s; }
+        .back-link:hover { color: #fff; }
+        .nav-right { display: flex; gap: 20px; }
+.nav-right a { font-size: 12px; font-weight: 700; letter-spacing: -0.01em; color: rgb(132, 137, 142); transition: color 0.2s; }
+.nav-right a:hover { color: #fff; }
+@keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.ticker-bar { position: fixed; bottom: 43px; left: 0; width: 100%; z-index: 10000; height: 24px; overflow: hidden; background: #000; border-top: 1px solid rgb(30, 30, 30); display: flex; align-items: center; pointer-events: none; }
+.ticker-track { display: flex; align-items: center; white-space: nowrap; animation: ticker-scroll 60s linear infinite; pointer-events: auto; }
+.ticker-track a { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 400; color: rgb(80, 80, 80); text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; padding: 0 6px; transition: color 0.2s; }
+.ticker-track a:hover { color: #fff; }
+.footer-bar { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 10000; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 400; color: rgb(132, 137, 142); background: #000; pointer-events: none; }
+        .footer-bar > * { pointer-events: auto; }
+        .footer-bar a { transition: color 0.2s; }
+        .footer-bar a:hover { color: #fff; }
+        .footer-left-bar { display: flex; gap: 24px; }
+        .footer-right-bar { display: flex; gap: 24px; }
+        @media (max-width: 768px) {
+            .project-page { padding: 80px 24px 80px; }
+            .spread { grid-template-columns: 1fr; }
+            .logo { font-size: 14px; } .ticker-bar { bottom: 56px; }
+            .footer-bar { flex-direction: column; gap: 8px; text-align: center; padding: 12px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar"><div class="nav-left"><a href="../projects.html">Index</a><a href="../drawings.html">Drawings</a></div><div class="nav-right"><a href="../contact.html">Contact</a></div></div>
+    <a href="../index.html" class="logo">XANDER SHAMBAUGH</a>
+
+    <div class="project-page">
+        <div class="project-header">
+            <h1>Brand Strategy</h1>
+            <p class="project-subtitle"><span>Creative Director / Graphic Designer</span> / Postmodern Tectonics LLC / 2025<br>Los Angeles, CA</p>
+        </div>
+
+        <div class="spread full">
+            <img src="../Links/Draft 15-03.PNG" alt="Brand strategy draft">
+        </div>
+
+        <div class="spread">
+            <img src="../Links/Font.JPG" alt="Font study">
+            <img src="../Links/font 2.JPG" alt="Font study">
+        </div>
+
+        <div class="spread full">
+            <img src="../Links/Sample 2.png" alt="Brand sample">
+        </div>
+
+        <a href="../projects.html" class="back-link">&larr; Back to Index</a>
+    </div>
+
+    <div class="ticker-bar"><div class="ticker-track"><a href="../projects-v2/concert-hall.html">[Concert Hall]</a><a href="../projects-v2/acoustic-pavilion.html">[Acoustic Pavilion]</a><a href="../projects-v2/restaurant.html">[Restaurant]</a><a href="../projects-v2/residential-towers.html">[Residential Towers]</a><a href="../projects-v2/single-family-residential.html">[Single-Family Residential]</a><a href="../projects-v2/design-studio.html">[Design Studio]</a><a href="../projects-v2/architectural-drawings.html">[Architectural Drawings]</a><a href="../projects-v2/musical-furniture.html">[Musical Furniture]</a><a href="../projects-v2/musical-objects.html">[Musical Objects]</a><a href="../projects-v2/vinyl-equipment.html">[Vinyl Equipment]</a><a href="../projects-v2/record-label.html">[Record Label]</a><a href="../projects-v2/creative-label.html">[Creative Label]</a><a href="../projects-v2/editorial.html">[Editorial]</a><a href="../projects-v2/brand-strategy.html">[Brand Strategy]</a><a href="../projects-v2/informal-urban-generator.html">[An Informal Urban Generator]</a><a href="../projects-v2/majlis-park-place.html">[Majlis Park Place]</a><a href="../projects-v2/another-34000-a-day.html">[Another 34,000 A Day]</a><a href="../projects-v2/living-on-the-edge.html">[Living on the Edge]</a><a href="../projects-v2/high-school-projects.html">[High School Projects]</a><a href="../projects-v2/concert-hall.html">[Concert Hall]</a><a href="../projects-v2/acoustic-pavilion.html">[Acoustic Pavilion]</a><a href="../projects-v2/restaurant.html">[Restaurant]</a><a href="../projects-v2/residential-towers.html">[Residential Towers]</a><a href="../projects-v2/single-family-residential.html">[Single-Family Residential]</a><a href="../projects-v2/design-studio.html">[Design Studio]</a><a href="../projects-v2/architectural-drawings.html">[Architectural Drawings]</a><a href="../projects-v2/musical-furniture.html">[Musical Furniture]</a><a href="../projects-v2/musical-objects.html">[Musical Objects]</a><a href="../projects-v2/vinyl-equipment.html">[Vinyl Equipment]</a><a href="../projects-v2/record-label.html">[Record Label]</a><a href="../projects-v2/creative-label.html">[Creative Label]</a><a href="../projects-v2/editorial.html">[Editorial]</a><a href="../projects-v2/brand-strategy.html">[Brand Strategy]</a><a href="../projects-v2/informal-urban-generator.html">[An Informal Urban Generator]</a><a href="../projects-v2/majlis-park-place.html">[Majlis Park Place]</a><a href="../projects-v2/another-34000-a-day.html">[Another 34,000 A Day]</a><a href="../projects-v2/living-on-the-edge.html">[Living on the Edge]</a><a href="../projects-v2/high-school-projects.html">[High School Projects]</a></div></div>
+<div class="footer-bar"><div class="footer-left-bar"><span>Los Angeles, CA</span><a href="mailto:xandershambaugh@gmail.com">xandershambaugh@gmail.com</a></div><div class="footer-right-bar"><a href="https://www.instagram.com/xandershambaugh/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/xander-shambaugh/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+
+</body>
+</html>

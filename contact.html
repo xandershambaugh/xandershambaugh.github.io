@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Xander Shambaugh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'POMOTECT ANALOG';
+      src: url('fonts/pomotect-analog.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'POMOTECT ANALOG BOLD';
+      src: url('fonts/pomotect-analog-bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #000;
+      color: rgb(132, 137, 142);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ======== NAVBAR ======== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10001;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none;
+    }
+
+    .navbar > * {
+      pointer-events: auto;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-left a {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: rgb(132, 137, 142);
+      transition: color 0.2s;
+    }
+
+    .nav-left a:hover {
+      color: #fff;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-right a {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: rgb(132, 137, 142);
+      transition: color 0.2s;
+    }
+
+    .nav-right a:hover {
+      color: #fff;
+    }
+
+    /* ======== LOGO ======== */
+    .logo {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10002;
+      font-family: 'IM Fell English', serif; text-transform: uppercase;
+      font-size: 28px;
+      font-weight: 400;
+      color: rgb(132, 137, 142);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      pointer-events: auto;
+      transition: color 0.2s;
+    }
+
+    .logo:hover {
+      color: #fff;
+    }
+
+    /* ======== CONTACT SECTION ======== */
+    .contact-section {
+      padding: 100px 48px 80px;
+      max-width: 640px;
+    }
+
+    .contact-heading {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 32px;
+    }
+
+    .contact-bio {
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgb(132, 137, 142);
+      margin-bottom: 36px;
+    }
+
+    .contact-bio p {
+      margin-bottom: 18px;
+    }
+
+    .contact-cta {
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgb(80, 80, 80);
+    }
+
+    .contact-cta a {
+      color: #fff;
+      transition: color 0.2s;
+    }
+
+    .contact-cta a:hover {
+      color: rgb(132, 137, 142);
+    }
+
+    /* ======== TICKER BAR ======== */
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-bar {
+      position: fixed;
+      bottom: 43px;
+      left: 0;
+      width: 100%;
+      z-index: 10000;
+      height: 24px;
+      overflow: hidden;
+      background: #000;
+      border-top: 1px solid rgb(30, 30, 30);
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: ticker-scroll 60s linear infinite;
+      pointer-events: auto;
+    }
+
+    .ticker-track a {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgb(80, 80, 80);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      padding: 0 6px;
+      transition: color 0.2s;
+    }
+
+    .ticker-track a:hover {
+      color: #fff;
+    }
+
+    /* ======== FOOTER BAR ======== */
+    .footer-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10000;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgb(132, 137, 142);
+      background: #000;
+      pointer-events: none;
+    }
+
+    .footer-bar > * {
+      pointer-events: auto;
+    }
+
+    .footer-bar a {
+      transition: color 0.2s;
+    }
+
+    .footer-bar a:hover {
+      color: #fff;
+    }
+
+    .footer-left-bar {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-right-bar {
+      display: flex;
+      gap: 24px;
+    }
+
+    /* ======== RESPONSIVE ======== */
+    @media (max-width: 768px) {
+      .contact-section {
+        padding: 80px 24px 80px;
+      }
+
+      .logo {
+        font-size: 14px;
+      }
+
+      .ticker-bar {
+        bottom: 56px;
+      }
+
+      .footer-bar {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        padding: 12px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAV ====== -->
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="projects.html">Index</a>
+      <a href="drawings.html">Drawings</a>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- ====== LOGO ====== -->
+  <a href="index.html" class="logo">XANDER SHAMBAUGH</a>
+
+  <!-- ====== CONTACT ====== -->
+  <section class="contact-section" id="contact">
+    <p class="contact-heading">Contact</p>
+
+    <div class="contact-bio">
+      <p>Originally trained as an architect, I moved to Los Angeles in 2018 to work alongside Frank Gehry in his design studio.</p>
+
+      <p>While starting at a firm that uses modelmaking as its primary design tool, I learned a lot in physical craft and gained an enormous appreciation for Frank's process of form-finding rooted in his innate curiosity for testing new materials and pushing their tectonic limitations.</p>
+
+      <p>In 2023, I co-founded a creative studio called Postmodern Tectonics.</p>
+
+      <p>We design spaces, we build furniture, strategize brands, help on marketing, and then we like to publish essays along the way.</p>
+    </div>
+
+    <div class="contact-cta">
+      <p>Visit our website at:<br><a href="https://www.pomotect.com" target="_blank" rel="noopener">www.pomotect.com</a></p>
+    </div>
+  </section>
+
+  <!-- ====== TICKER BAR ====== -->
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <a href="projects-v2/concert-hall.html">[Concert Hall]</a>
+      <a href="projects-v2/acoustic-pavilion.html">[Acoustic Pavilion]</a>
+      <a href="projects-v2/restaurant.html">[Restaurant]</a>
+      <a href="projects-v2/residential-towers.html">[Residential Towers]</a>
+      <a href="projects-v2/single-family-residential.html">[Single-Family Residential]</a>
+      <a href="projects-v2/design-studio.html">[Design Studio]</a>
+      <a href="projects-v2/architectural-drawings.html">[Architectural Drawings]</a>
+      <a href="projects-v2/musical-furniture.html">[Musical Furniture]</a>
+      <a href="projects-v2/musical-objects.html">[Musical Objects]</a>
+      <a href="projects-v2/vinyl-equipment.html">[Vinyl Equipment]</a>
+      <a href="projects-v2/record-label.html">[Record Label]</a>
+      <a href="projects-v2/creative-label.html">[Creative Label]</a>
+      <a href="projects-v2/editorial.html">[Editorial]</a>
+      <a href="projects-v2/brand-strategy.html">[Brand Strategy]</a>
+      <a href="projects-v2/informal-urban-generator.html">[An Informal Urban Generator]</a>
+      <a href="projects-v2/majlis-park-place.html">[Majlis Park Place]</a>
+      <a href="projects-v2/another-34000-a-day.html">[Another 34,000 A Day]</a>
+      <a href="projects-v2/living-on-the-edge.html">[Living on the Edge]</a>
+      <a href="projects-v2/high-school-projects.html">[High School Projects]</a>
+      <!-- duplicate for seamless loop -->
+      <a href="projects-v2/concert-hall.html">[Concert Hall]</a>
+      <a href="projects-v2/acoustic-pavilion.html">[Acoustic Pavilion]</a>
+      <a href="projects-v2/restaurant.html">[Restaurant]</a>
+      <a href="projects-v2/residential-towers.html">[Residential Towers]</a>
+      <a href="projects-v2/single-family-residential.html">[Single-Family Residential]</a>
+      <a href="projects-v2/design-studio.html">[Design Studio]</a>
+      <a href="projects-v2/architectural-drawings.html">[Architectural Drawings]</a>
+      <a href="projects-v2/musical-furniture.html">[Musical Furniture]</a>
+      <a href="projects-v2/musical-objects.html">[Musical Objects]</a>
+      <a href="projects-v2/vinyl-equipment.html">[Vinyl Equipment]</a>
+      <a href="projects-v2/record-label.html">[Record Label]</a>
+      <a href="projects-v2/creative-label.html">[Creative Label]</a>
+      <a href="projects-v2/editorial.html">[Editorial]</a>
+      <a href="projects-v2/brand-strategy.html">[Brand Strategy]</a>
+      <a href="projects-v2/informal-urban-generator.html">[An Informal Urban Generator]</a>
+      <a href="projects-v2/majlis-park-place.html">[Majlis Park Place]</a>
+      <a href="projects-v2/another-34000-a-day.html">[Another 34,000 A Day]</a>
+      <a href="projects-v2/living-on-the-edge.html">[Living on the Edge]</a>
+      <a href="projects-v2/high-school-projects.html">[High School Projects]</a>
+    </div>
+  </div>
+
+  <!-- ====== PERSISTENT FOOTER BAR ====== -->
+  <div class="footer-bar">
+    <div class="footer-left-bar">
+      <span>Los Angeles, CA</span>
+      <a href="mailto:xandershambaugh@gmail.com">xandershambaugh@gmail.com</a>
+    </div>
+    <div class="footer-right-bar">
+      <a href="https://www.instagram.com/xandershambaugh/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/xander-shambaugh/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+</body>
+</html>

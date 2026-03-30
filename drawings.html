@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawings — Xander Shambaugh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'POMOTECT ANALOG';
+      src: url('fonts/pomotect-analog.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'POMOTECT ANALOG BOLD';
+      src: url('fonts/pomotect-analog-bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #000;
+      color: rgb(132, 137, 142);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    /* ======== NAVBAR ======== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10001;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none;
+    }
+
+    .navbar > * {
+      pointer-events: auto;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-left a {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: rgb(132, 137, 142);
+      transition: color 0.2s;
+    }
+
+    .nav-left a:hover {
+      color: #fff;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-right a {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: rgb(132, 137, 142);
+      transition: color 0.2s;
+    }
+
+    .nav-right a:hover {
+      color: #fff;
+    }
+
+    /* ======== LOGO ======== */
+    .logo {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10002;
+      font-family: 'IM Fell English', serif; text-transform: uppercase;
+      font-size: 28px;
+      font-weight: 400;
+      color: rgb(132, 137, 142);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      pointer-events: auto;
+      transition: color 0.2s;
+    }
+
+    .logo:hover {
+      color: #fff;
+    }
+
+    /* ======== DRAWINGS GALLERY ======== */
+    .drawings-section {
+      padding: 90px 48px 80px;
+    }
+
+    .drawings-heading {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 36px;
+    }
+
+    .drawings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .drawing-item {
+      overflow: hidden;
+    }
+
+    .drawing-item img {
+      transition: transform 0.6s cubic-bezier(0.25, 0, 0.25, 1);
+      border: 1px solid rgb(30,30,30);
+    }
+
+    .drawing-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .drawing-caption {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: rgb(60,60,60);
+      margin-top: 8px;
+    }
+
+    /* ======== TICKER BAR ======== */
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-bar {
+      position: fixed;
+      bottom: 43px;
+      left: 0;
+      width: 100%;
+      z-index: 10000;
+      height: 24px;
+      overflow: hidden;
+      background: #000;
+      border-top: 1px solid rgb(30, 30, 30);
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: ticker-scroll 60s linear infinite;
+      pointer-events: auto;
+    }
+
+    .ticker-track a {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgb(80, 80, 80);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      padding: 0 6px;
+      transition: color 0.2s;
+    }
+
+    .ticker-track a:hover {
+      color: #fff;
+    }
+
+    /* ======== FOOTER BAR ======== */
+    .footer-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10000;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgb(132, 137, 142);
+      background: #000;
+      pointer-events: none;
+    }
+
+    .footer-bar > * {
+      pointer-events: auto;
+    }
+
+    .footer-bar a {
+      transition: color 0.2s;
+    }
+
+    .footer-bar a:hover {
+      color: #fff;
+    }
+
+    .footer-left-bar {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-right-bar {
+      display: flex;
+      gap: 24px;
+    }
+
+    /* ======== RESPONSIVE ======== */
+    @media (max-width: 1100px) {
+      .drawings-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .drawings-section {
+        padding: 80px 24px 80px;
+      }
+
+      .drawings-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .logo {
+        font-size: 14px;
+      }
+
+      .ticker-bar {
+        bottom: 56px;
+      }
+
+      .footer-bar {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        padding: 12px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAV ====== -->
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="projects.html">Index</a>
+      <a href="drawings.html">Drawings</a>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- ====== LOGO ====== -->
+  <a href="index.html" class="logo">XANDER SHAMBAUGH</a>
+
+  <!-- ====== DRAWINGS ====== -->
+  <section class="drawings-section" id="drawings">
+    <p class="drawings-heading">Drawings</p>
+
+    <div class="drawings-grid">
+      <div class="drawing-item">
+        <img src="Links/Flatiron (edited) copy.jpg" alt="Flatiron Building">
+        <p class="drawing-caption">Flatiron Building, New York</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Notre Dame (Edited).jpg" alt="Notre Dame Cathedral">
+        <p class="drawing-caption">Notre Dame Cathedral, Paris</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Manhattan Bridge 2 (16 x 16).jpg" alt="Manhattan Bridge">
+        <p class="drawing-caption">Manhattan Bridge, New York</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Centre Pompidou (16x16).jpg" alt="Centre Pompidou">
+        <p class="drawing-caption">Centre Pompidou, Paris</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/2021-11-30_Exeter Library (12x16).jpg" alt="Exeter Library">
+        <p class="drawing-caption">Phillips Exeter Library, New Hampshire</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/FLV (12 x 16) (No Signature).jpg" alt="Fondation Louis Vuitton">
+        <p class="drawing-caption">Fondation Louis Vuitton, Paris</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/IMG-7979 (16x16) (unsigned).jpg" alt="Guggenheim Bilbao">
+        <p class="drawing-caption">Guggenheim Bilbao, Spain</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/IMG-3212 (edited).jpg" alt="St. Paul's Cathedral">
+        <p class="drawing-caption">St. Paul's Cathedral, London</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Hopa Sketches (Raw)_Page_01 copy.jpg" alt="HOPA Sketch 1">
+        <p class="drawing-caption">Hospitality Project, Sketch 01</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Hopa Sketches (Raw)_Page_02 copy.jpg" alt="HOPA Sketch 2">
+        <p class="drawing-caption">Hospitality Project, Sketch 02</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Hopa Sketches (Raw)_Page_03 copy.jpg" alt="HOPA Sketch 3">
+        <p class="drawing-caption">Hospitality Project, Sketch 03</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Hopa Sketches (Raw)_Page_04 copy.jpg" alt="HOPA Sketch 4">
+        <p class="drawing-caption">Hospitality Project, Sketch 04</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Hopa Sketches (Raw)_Page_05 copy.jpg" alt="HOPA Sketch 5">
+        <p class="drawing-caption">Hospitality Project, Sketch 05</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Hopa Sketches (Raw)_Page_06 copy.jpg" alt="HOPA Sketch 6">
+        <p class="drawing-caption">Hospitality Project, Sketch 06</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Concept Sketch2.jpg" alt="Concept Sketch 2">
+        <p class="drawing-caption">Residential Concept, Sketch 02</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Concept Sketch3.jpg" alt="Concept Sketch 3">
+        <p class="drawing-caption">Residential Concept, Sketch 03</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Concept Sketch4.jpg" alt="Concept Sketch 4">
+        <p class="drawing-caption">Residential Concept, Sketch 04</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Concept Sketch5.jpg" alt="Concept Sketch 5">
+        <p class="drawing-caption">Residential Concept, Sketch 05</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Concept Sketch8.jpg" alt="Concept Sketch 8">
+        <p class="drawing-caption">Residential Concept, Sketch 08</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Concept Sketch10.jpg" alt="Concept Sketch 10">
+        <p class="drawing-caption">Residential Concept, Sketch 10</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Concept Sketch11.jpg" alt="Concept Sketch 11">
+        <p class="drawing-caption">Residential Concept, Sketch 11</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Concept Sketch13.jpg" alt="Concept Sketch 13">
+        <p class="drawing-caption">Residential Concept, Sketch 13</p>
+      </div>
+      <div class="drawing-item">
+        <img src="Links/Concept Sketch14.jpg" alt="Concept Sketch 14">
+        <p class="drawing-caption">Residential Concept, Sketch 14</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TICKER BAR ====== -->
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <a href="projects-v2/concert-hall.html">[Concert Hall]</a>
+      <a href="projects-v2/acoustic-pavilion.html">[Acoustic Pavilion]</a>
+      <a href="projects-v2/restaurant.html">[Restaurant]</a>
+      <a href="projects-v2/residential-towers.html">[Residential Towers]</a>
+      <a href="projects-v2/single-family-residential.html">[Single-Family Residential]</a>
+      <a href="projects-v2/design-studio.html">[Design Studio]</a>
+      <a href="projects-v2/architectural-drawings.html">[Architectural Drawings]</a>
+      <a href="projects-v2/musical-furniture.html">[Musical Furniture]</a>
+      <a href="projects-v2/musical-objects.html">[Musical Objects]</a>
+      <a href="projects-v2/vinyl-equipment.html">[Vinyl Equipment]</a>
+      <a href="projects-v2/record-label.html">[Record Label]</a>
+      <a href="projects-v2/creative-label.html">[Creative Label]</a>
+      <a href="projects-v2/editorial.html">[Editorial]</a>
+      <a href="projects-v2/brand-strategy.html">[Brand Strategy]</a>
+      <a href="projects-v2/informal-urban-generator.html">[An Informal Urban Generator]</a>
+      <a href="projects-v2/majlis-park-place.html">[Majlis Park Place]</a>
+      <a href="projects-v2/another-34000-a-day.html">[Another 34,000 A Day]</a>
+      <a href="projects-v2/living-on-the-edge.html">[Living on the Edge]</a>
+      <a href="projects-v2/high-school-projects.html">[High School Projects]</a>
+      <a href="projects-v2/concert-hall.html">[Concert Hall]</a>
+      <a href="projects-v2/acoustic-pavilion.html">[Acoustic Pavilion]</a>
+      <a href="projects-v2/restaurant.html">[Restaurant]</a>
+      <a href="projects-v2/residential-towers.html">[Residential Towers]</a>
+      <a href="projects-v2/single-family-residential.html">[Single-Family Residential]</a>
+      <a href="projects-v2/design-studio.html">[Design Studio]</a>
+      <a href="projects-v2/architectural-drawings.html">[Architectural Drawings]</a>
+      <a href="projects-v2/musical-furniture.html">[Musical Furniture]</a>
+      <a href="projects-v2/musical-objects.html">[Musical Objects]</a>
+      <a href="projects-v2/vinyl-equipment.html">[Vinyl Equipment]</a>
+      <a href="projects-v2/record-label.html">[Record Label]</a>
+      <a href="projects-v2/creative-label.html">[Creative Label]</a>
+      <a href="projects-v2/editorial.html">[Editorial]</a>
+      <a href="projects-v2/brand-strategy.html">[Brand Strategy]</a>
+      <a href="projects-v2/informal-urban-generator.html">[An Informal Urban Generator]</a>
+      <a href="projects-v2/majlis-park-place.html">[Majlis Park Place]</a>
+      <a href="projects-v2/another-34000-a-day.html">[Another 34,000 A Day]</a>
+      <a href="projects-v2/living-on-the-edge.html">[Living on the Edge]</a>
+      <a href="projects-v2/high-school-projects.html">[High School Projects]</a>
+    </div>
+  </div>
+
+  <!-- ====== PERSISTENT FOOTER BAR ====== -->
+  <div class="footer-bar">
+    <div class="footer-left-bar">
+      <span>Los Angeles, CA</span>
+      <a href="mailto:xandershambaugh@gmail.com">xandershambaugh@gmail.com</a>
+    </div>
+    <div class="footer-right-bar">
+      <a href="https://www.instagram.com/xandershambaugh/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/xander-shambaugh/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+</body>
+</html>
