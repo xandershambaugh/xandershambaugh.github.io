@@ -54,8 +54,24 @@
       text-decoration: none;
     }
 
-    img {
-      display: block;
+    /* ======== SPLASH SCREEN ======== */
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #ffffe9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease;
+    }
+
+    .splash-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .splash-screen img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -136,22 +152,63 @@
       color: #000;
     }
 
-    /* ======== HERO IMAGE ======== */
-    .hero-image {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 50vw;
-      height: 100vh;
-      overflow: hidden;
-      z-index: 0;
+    /* ======== PROJECT LIST (MSCHF-style) ======== */
+    .project-list {
+      padding: 16px 12px 120px;
+      padding-top: 70px;
     }
 
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(100%);
+    .section-divider {
+      padding: 20px 0 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      margin-bottom: 4px;
+    }
+
+    .section-divider:first-child {
+      padding-top: 0;
+    }
+
+    .project-row {
+      display: flex;
+      align-items: baseline;
+      line-height: 0.86;
+      transition: color 0.15s;
+    }
+
+    .project-row:hover {
+      color: #000;
+    }
+
+    .project-num {
+      flex-shrink: 0;
+      width: 60px;
+      font-size: clamp(24px, 2.5vw, 32px);
+      text-align: right;
+      padding-right: 16px;
+      user-select: none;
+    }
+
+    .project-name {
+      font-size: clamp(40px, 5vw, 76px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 0.92;
+      padding: 4px 0;
+    }
+
+    .project-name a {
+      transition: color 0.15s;
+    }
+
+    .project-row:hover .project-name a {
+      color: #000;
     }
 
     /* ======== TICKER BAR ======== */
@@ -303,84 +360,6 @@
       color: #000;
     }
 
-    /* ======== MOBILE HERO ======== */
-    .mobile-hero {
-      display: none;
-      width: 100%;
-    }
-
-    .mobile-hero img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: grayscale(100%);
-    }
-
-    /* ======== MOBILE CONTACT ======== */
-    .mobile-contact {
-      display: none;
-      padding: 32px 24px 120px;
-      max-width: 640px;
-    }
-
-    .mobile-contact .contact-heading {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #000;
-      margin-bottom: 32px;
-    }
-
-    .mobile-contact .contact-bio {
-      font-size: 13px;
-      line-height: 1.8;
-      color: rgba(0, 0, 0, 0.55);
-      margin-bottom: 36px;
-    }
-
-    .mobile-contact .contact-bio p {
-      margin-bottom: 18px;
-    }
-
-    .mobile-contact .contact-cta {
-      font-size: 13px;
-      line-height: 1.8;
-      color: rgba(0, 0, 0, 0.25);
-    }
-
-    .mobile-contact .contact-cta a {
-      color: #000;
-      transition: color 0.2s;
-    }
-
-    .mobile-contact .contact-cta a:hover {
-      color: rgba(0, 0, 0, 0.55);
-    }
-
-    /* ======== MOBILE NAV SPLASH ======== */
-    .mobile-nav-splash {
-      display: none;
-      flex-direction: column;
-      gap: 24px;
-      padding: 100px 24px 120px;
-    }
-
-    .mobile-nav-splash a {
-      font-family: 'Space Mono', monospace;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      color: rgba(0, 0, 0, 0.55);
-      transition: color 0.2s;
-    }
-
-    .mobile-nav-splash a:hover {
-      color: #000;
-    }
-
     /* ======== RESPONSIVE ======== */
     @media (max-width: 768px) {
       .nav-left, .nav-right {
@@ -394,14 +373,6 @@
 
       .mobile-menu-btn {
         display: flex;
-      }
-
-      .hero-image {
-        display: none;
-      }
-
-      .mobile-nav-splash {
-        display: none;
       }
 
       .ticker-bar {
@@ -418,6 +389,11 @@
   </style>
 </head>
 <body>
+
+  <!-- ====== SPLASH SCREEN ====== -->
+  <div class="splash-screen" id="splash">
+    <img src="Links/cover.jpeg" alt="">
+  </div>
 
   <!-- ====== NAV ====== -->
   <div class="navbar">
@@ -443,71 +419,112 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <!-- ====== HERO IMAGE (desktop) ====== -->
-  <div class="hero-image">
-    <img id="hero-img" src="" alt="Featured project">
-  </div>
+  <!-- ====== PROJECT LIST (MSCHF-style) ====== -->
+  <div class="project-list">
 
-  <!-- ====== MOBILE HERO ====== -->
-  <div class="mobile-hero">
-    <img id="mobile-hero-img" src="" alt="Featured project">
-  </div>
+    <!-- CHAPTER 1: MUSIC -->
+    <div class="section-divider">Chapter 1 : Music</div>
 
-  <!-- ====== MOBILE CONTACT ====== -->
-  <div class="mobile-contact">
-    <p class="contact-heading">Contact</p>
-    <div class="contact-bio">
-      <p>Originally trained as an architect, I moved to Los Angeles in 2018 to work alongside Frank Gehry in his design studio.</p>
-      <p>While starting at a firm that uses modelmaking as its primary design tool, I learned a lot in physical craft and gained an enormous appreciation for Frank's process of form-finding rooted in his innate curiosity for testing new materials and pushing their tectonic limitations.</p>
-      <p>In 2023, I co-founded a creative studio called Postmodern Tectonics.</p>
-      <p>We design spaces, we build furniture, strategize brands, help on marketing, and then we like to publish essays along the way.</p>
+    <div class="project-row">
+      <div class="project-num">#1</div>
+      <div class="project-name"><a href="projects/musical-furniture.html">Musical Furniture</a></div>
     </div>
-    <div class="contact-cta">
-      <p>Visit our website at:<br><a href="https://www.pomotect.com" target="_blank" rel="noopener">www.pomotect.com</a></p>
+    <div class="project-row">
+      <div class="project-num">#2</div>
+      <div class="project-name"><a href="projects/musical-objects.html">Musical Objects</a></div>
     </div>
-  </div>
+    <div class="project-row">
+      <div class="project-num">#3</div>
+      <div class="project-name"><a href="projects/vinyl-equipment.html">Vinyl Equipment</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#4</div>
+      <div class="project-name"><a href="projects/record-label.html">Record Label</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#5</div>
+      <div class="project-name"><a href="projects/creative-label.html">Creative Label</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#6</div>
+      <div class="project-name"><a href="projects/editorial.html">Editorial</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#7</div>
+      <div class="project-name"><a href="projects/brand-strategy.html">Brand Strategy</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#8</div>
+      <div class="project-name"><a href="projects-v2/lamps.html">Lamps</a></div>
+    </div>
 
-  <!-- ====== MOBILE NAV SPLASH ====== -->
-  <div class="mobile-nav-splash" id="mobile-nav-splash">
-    <a href="projects.html">Projects</a>
-    <a href="drawings.html">Drawings</a>
-    <a href="contact.html">Contact</a>
+    <!-- CHAPTER 2: ARCHITECTURE -->
+    <div class="section-divider">Chapter 2 : Architecture</div>
+
+    <div class="project-row">
+      <div class="project-num">#1</div>
+      <div class="project-name"><a href="projects/concert-hall.html">Concert Hall</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#2</div>
+      <div class="project-name"><a href="projects/acoustic-pavilion.html">Acoustic Pavilion</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#3</div>
+      <div class="project-name"><a href="projects/restaurant.html">Restaurant (Mixed-Use)</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#4</div>
+      <div class="project-name"><a href="projects/residential-towers.html">Residential Towers</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#5</div>
+      <div class="project-name"><a href="projects/single-family-residential.html">Single-Family Residential</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#6</div>
+      <div class="project-name"><a href="projects/design-studio.html">Design Studio</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#7</div>
+      <div class="project-name"><a href="projects/architectural-drawings.html">Architectural Drawings</a></div>
+    </div>
+
+    <!-- APPENDIX: ACADEMIC -->
+    <div class="section-divider">Appendix : Academic</div>
+
+    <div class="project-row">
+      <div class="project-num">#1</div>
+      <div class="project-name"><a href="projects/informal-urban-generator.html">An Informal Urban Generator</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#2</div>
+      <div class="project-name"><a href="projects/majlis-park-place.html">Majlis Park Place</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#3</div>
+      <div class="project-name"><a href="projects/another-34000-a-day.html">Another 34,000 A Day</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#4</div>
+      <div class="project-name"><a href="projects/living-on-the-edge.html">Living on the Edge</a></div>
+    </div>
+    <div class="project-row">
+      <div class="project-num">#5</div>
+      <div class="project-name"><a href="projects/high-school-projects.html">High School Projects</a></div>
+    </div>
+
   </div>
 
   <script>
     (function() {
-      // === Desktop hero image ===
-      var images = [
-        'Links/IMG_7048_1.jpg',
-        'Links/EXT09_Looking up_v02.jpg',
-        'Links/DSCF3300.JPG',
-        'Links/Aerial 12.jpg',
-        'Links/Flatiron (edited) copy.jpg',
-        'Links/IMG_7055_1.jpg',
-        'Links/Notre Dame (Edited).jpg',
-        'Links/IMG_5207.JPEG',
-        'Links/Proof 55.jpg'
-      ];
-      var idx = Math.floor(Math.random() * images.length);
-      document.getElementById('hero-img').src = images[idx];
-      document.getElementById('mobile-hero-img').src = images[idx];
-
-      // === Mobile nav splash: shuffle order & randomize font sizes ===
-      var container = document.getElementById('mobile-nav-splash');
-      var links = Array.from(container.children);
-      // Fisher-Yates shuffle
-      for (var i = links.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        container.appendChild(links[j]);
-        var temp = links[i];
-        links[i] = links[j];
-        links[j] = temp;
-      }
-      // Random font sizes between 28px and 72px
-      links.forEach(function(link) {
-        var size = Math.floor(Math.random() * 45) + 28;
-        link.style.fontSize = size + 'px';
-      });
+      // === Splash screen: 1.5s then fade out ===
+      setTimeout(function() {
+        document.getElementById('splash').classList.add('fade-out');
+      }, 1500);
+      setTimeout(function() {
+        document.getElementById('splash').style.display = 'none';
+      }, 2300);
     })();
   </script>
 
