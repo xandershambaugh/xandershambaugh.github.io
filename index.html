@@ -359,6 +359,52 @@
       color: rgba(0, 0, 0, 0.55);
     }
 
+    /* ======== MOBILE NAV SPLASH ======== */
+    .mobile-nav-splash {
+      display: none;
+      flex-direction: column;
+      gap: 24px;
+      padding: 100px 24px 120px;
+    }
+
+    .mobile-nav-splash a {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: rgba(0, 0, 0, 0.55);
+      transition: color 0.2s;
+    }
+
+    .mobile-nav-splash a:hover {
+      color: #000;
+    }
+
+    /* ======== SPLASH SCREEN ======== */
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgb(255, 238, 238);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease;
+    }
+
+    .splash-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .splash-screen img {
+      max-width: 70vw;
+      max-height: 70vh;
+      object-fit: contain;
+      filter: grayscale(100%);
+    }
+
     /* ======== RESPONSIVE ======== */
     @media (max-width: 768px) {
       .nav-left, .nav-right {
@@ -378,12 +424,8 @@
         display: none;
       }
 
-      .mobile-hero {
-        display: block;
-      }
-
-      .mobile-contact {
-        display: block;
+      .mobile-nav-splash {
+        display: flex;
       }
 
       .ticker-bar {
@@ -401,10 +443,15 @@
 </head>
 <body>
 
+  <!-- ====== SPLASH SCREEN ====== -->
+  <div class="splash-screen" id="splash">
+    <img id="splash-img" src="" alt="">
+  </div>
+
   <!-- ====== NAV ====== -->
   <div class="navbar">
     <div class="nav-left">
-      <a href="projects.html">Index</a>
+      <a href="projects.html">Projects</a>
       <a href="drawings.html">Drawings</a>
     </div>
     <div class="nav-right">
@@ -420,7 +467,7 @@
     <span></span><span></span><span></span>
   </button>
   <div class="mobile-overlay">
-    <a href="projects.html">Index</a>
+    <a href="projects.html">Projects</a>
     <a href="drawings.html">Drawings</a>
     <a href="contact.html">Contact</a>
   </div>
@@ -449,8 +496,16 @@
     </div>
   </div>
 
+  <!-- ====== MOBILE NAV SPLASH ====== -->
+  <div class="mobile-nav-splash" id="mobile-nav-splash">
+    <a href="projects.html">Projects</a>
+    <a href="drawings.html">Drawings</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
   <script>
     (function() {
+      // === Desktop hero image ===
       var images = [
         'Links/IMG_7048_1.jpg',
         'Links/EXT09_Looking up_v02.jpg',
@@ -465,6 +520,32 @@
       var idx = Math.floor(Math.random() * images.length);
       document.getElementById('hero-img').src = images[idx];
       document.getElementById('mobile-hero-img').src = images[idx];
+
+      // === Splash screen ===
+      document.getElementById('splash-img').src = images[Math.floor(Math.random() * images.length)];
+      setTimeout(function() {
+        document.getElementById('splash').classList.add('fade-out');
+      }, 2000);
+      setTimeout(function() {
+        document.getElementById('splash').style.display = 'none';
+      }, 2800);
+
+      // === Mobile nav splash: shuffle order & randomize font sizes ===
+      var container = document.getElementById('mobile-nav-splash');
+      var links = Array.from(container.children);
+      // Fisher-Yates shuffle
+      for (var i = links.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        container.appendChild(links[j]);
+        var temp = links[i];
+        links[i] = links[j];
+        links[j] = temp;
+      }
+      // Random font sizes between 28px and 72px
+      links.forEach(function(link) {
+        var size = Math.floor(Math.random() * 45) + 28;
+        link.style.fontSize = size + 'px';
+      });
     })();
   </script>
 
